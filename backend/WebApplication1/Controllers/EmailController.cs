@@ -37,12 +37,10 @@ namespace WebApplication1.Controllers
                     message = "Your story has been sent successfully!"
                 });
             }
-            catch
+            catch (Exception ex)
             {
-                return StatusCode(500, new
-                {
-                    message = "Something went wrong while sending your message."
-                });
+                Console.Error.WriteLine($"EMAIL ERROR: {ex}");
+                return StatusCode(500, new { message = "Something went wrong while sending your message." });
             }
         }
     }
